@@ -1,58 +1,44 @@
-import javax.swing.*; // impor componentes gráficos básicos;
-import java.awt.*;  // importa classes para controle de layout
-import java.awt.event.*; // importa classes para tratamento de eventos
+import javax.swing.*;
 
+public class Aula4_1 extends JFrame {
 
-
-public class Aula4_1  extends JFrame{
-
-    private JTextField campoNome;  // campo de texto
-    private JButton botaoSaudar; // Botão aciona a saudação
-    private JLabel labelMensagem; // mensagem exibida
+    JTextField txtNome;
+    JTextField txtEmail;
+    JButton btnSalvar;
 
     public Aula4_1() {
-    setTitle("Progama de saudação");
 
-    setSize(350,150);
+        setTitle("Cadastro de Aluno");
+        setSize(400, 250);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel painel = new JPanel();
 
-    setLocationRelativeTo(null);
+        painel.add(new JLabel("Nome: "));
+        txtNome = new JTextField(20);
+        painel.add(txtNome);
 
-    JPanel painel = new JPanel();
-    painel.setLayout(new FlowLayout());
+        painel.add(new JLabel("E-mail: "));
+        txtEmail = new JTextField(20);
+        painel.add(txtEmail);
 
-    campoNome = new JTextField(20);
+        btnSalvar = new JButton("Salvar");
+        painel.add(btnSalvar);
 
-    botaoSaudar = new JButton ("Saudar");
+        btnSalvar.addActionListener(e ->{
+            String nome = txtNome.getText();
+            String email = txtEmail.getText();
 
-    labelMensagem = new JLabel("Digite seu nome e clique em Saudar");
+            JOptionPane.showMessageDialog(
+                this,
+                "Nome "+ nome + "/nE-mail: " + email);
+        });
 
-    painel.add( new JLabel("Nome"));
-    painel.add(campoNome);
-    painel.add(botaoSaudar);
-    painel.add(labelMensagem);
-
-  botaoSaudar.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String nome = campoNome.getText().trim();
-
-        if (nome.isEmpty()) {
-            labelMensagem.setText("Por favor, digite seu nome!");
-        } else {
-            labelMensagem.setText("Olá, " + nome + " Seja bem-vindo(a)");
-        }
+        add(painel);
     }
-});
-    add(painel);
-}
 
-public static void main(String [] args){
-    SwingUtilities.invokeLater(() ->{
-        Aula4_1 janela = new Aula4_1();
-        janela.setVisible(true);
-    });
-}
-    
+    public static void main(String[] args) {
+        new Aula4_1().setVisible(true);
+    }
 }
