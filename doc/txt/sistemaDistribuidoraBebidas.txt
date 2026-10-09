@@ -1,0 +1,16 @@
+**Sistema de Distribuidora de Bebidas**
+
+Classe: Cliente
+
+Atributos:
+- id: int
+- nome: String
+- telefone: String
+- endereço: String
+
+Métodos:
+- verEstoque(): void
+- realizarPedido():void
+
+Construtor:
+- Produto(nome, preço, quantidadeEstoque): cria um produto com suas informações iniciais.
